@@ -1,3 +1,9 @@
+<img width="1437" height="702" alt="image" src="https://github.com/user-attachments/assets/1b0e6250-4de0-41a7-81f4-a2e3fba757c5" />
+
+
+
+
+
 # CricAnalytics
 
 A comprehensive full-stack cricket analytics web application for exploring player statistics, building teams, comparing players, and viewing rankings across different cricket formats (ODI, Test, T20).
