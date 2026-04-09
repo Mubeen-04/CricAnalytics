@@ -30,17 +30,17 @@ def api_root(request):
 
 
 urlpatterns = [
-    path('', api_root),
     path('admin/', admin.site.urls),
     path('api/', include('players.urls')),
     path('api/', include('stats.urls')),
+    path('api/docs/', api_root),  # API documentation at /api/docs/
 ]
 
-# Serve frontend static files and SPA fallback
+# Serve static files
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# Catch-all route for SPA - must be last
+# Catch-all for SPA - must be last
 urlpatterns += [
-    path('<path:resource>', TemplateView.as_view(template_name='index.html')),
     path('', TemplateView.as_view(template_name='index.html')),
+    path('<path:resource>', TemplateView.as_view(template_name='index.html')),
 ]
