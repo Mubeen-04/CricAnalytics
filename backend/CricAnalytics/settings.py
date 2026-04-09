@@ -105,9 +105,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# For development, also serve from static directory
+# Point directly to Vite's dist folder
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / 'static' / 'dist',
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
