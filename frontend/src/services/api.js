@@ -1,10 +1,10 @@
 // ─────────────────────────────────────────────────────────
 //  API service — exact match to CricAnalytics Django backend
 //
-//  Base URL comes from .env:  VITE_API_URL=http://localhost:8000/api
+//  Base URL uses current domain (works on localhost and production)
 // ─────────────────────────────────────────────────────────
 
-const BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+const BASE = `${window.location.origin}/api`;
 
 async function get(path) {
   const res = await fetch(`${BASE}${path}`);
