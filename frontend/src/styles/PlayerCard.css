@@ -1,0 +1,330 @@
+.player-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.player-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-bright);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow), var(--shadow-glow);
+}
+
+.player-card:hover::before {
+  opacity: 1;
+}
+
+.player-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+/* ── Avatar: image or initials fallback ── */
+.player-card__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--bg-primary);
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid rgba(240, 180, 41, 0.25);
+}
+
+.player-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* initials fallback keeps the gold gradient */
+.player-card__avatar--initials {
+  background: linear-gradient(135deg, var(--accent-gold-dim), var(--accent-gold));
+}
+
+/* ── Country: nation name only ── */
+
+.player-card__country {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+}
+
+/* ── Wicket-keeper role colour ── */
+.player-card__role--keeper {
+  background: rgba(168, 85, 247, 0.1);
+  color: #a855f7;
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.player-card__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.player-card__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+}
+
+.player-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
+.player-card__role {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: rgba(240, 180, 41, 0.1);
+  color: var(--accent-gold);
+  border: 1px solid rgba(240, 180, 41, 0.2);
+  white-space: nowrap;
+}
+
+.player-card__role--bowler {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent-blue);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.player-card__role--allrounder {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--accent-cyan);
+  border-color: rgba(6, 182, 212, 0.2);
+}
+
+.player-card__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.player-card__stats--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.player-card__stat {
+  text-align: center;
+  padding: 10px 6px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.player-card__stat-value {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.player-card__stat-value--style {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.25;
+  letter-spacing: 0.1px;
+  overflow-wrap: break-word;
+}
+
+.player-card__stat-value--id {
+  font-size: 13px;
+}
+
+.player-card__stat-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 3px;
+}
+
+.player-card__formats {
+  display: flex;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.player-card__format-tag {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  letter-spacing: 0.5px;
+}
+
+.player-card__format-tag.active {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--accent-green);
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .player-card {
+    padding: 16px;
+  }
+
+  .player-card__header {
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .player-card__avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+
+  .player-card__name {
+    font-size: 14px;
+  }
+
+  .player-card__country {
+    font-size: 11px;
+  }
+
+  .player-card__role {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .player-card__stats {
+    gap: 8px;
+  }
+
+  .player-card__stat {
+    padding: 8px 4px;
+  }
+
+  .player-card__stat-value {
+    font-size: 14px;
+  }
+
+  .player-card__stat-label {
+    font-size: 9px;
+    margin-top: 2px;
+  }
+
+  .player-card__formats {
+    gap: 4px;
+    margin-top: 10px;
+  }
+
+  .player-card__format-tag {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .player-card {
+    padding: 12px;
+  }
+
+  .player-card:hover {
+    transform: translateY(-1px);
+  }
+
+  .player-card__header {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .player-card__avatar {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+    border: 1.5px solid rgba(240, 180, 41, 0.25);
+  }
+
+  .player-card__name {
+    font-size: 13px;
+  }
+
+  .player-card__country {
+    font-size: 10px;
+  }
+
+  .player-card__meta {
+    gap: 6px;
+    margin-bottom: 2px;
+  }
+
+  .player-card__role {
+    font-size: 9px;
+    padding: 1px 5px;
+  }
+
+  .player-card__stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .player-card__stat {
+    padding: 6px 3px;
+  }
+
+  .player-card__stat-value {
+    font-size: 12px;
+  }
+
+  .player-card__stat-label {
+    font-size: 8px;
+    margin-top: 1px;
+  }
+
+  .player-card__formats {
+    gap: 3px;
+    margin-top: 8px;
+  }
+
+  .player-card__format-tag {
+    font-size: 8px;
+    padding: 1px 4px;
+    letter-spacing: 0.3px;
+  }
+}
